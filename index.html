@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Panels galery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<style>
+    html, body{
+        margin: 0;
+        padding: 0;
+    }
+
+    *{box-sizing: border-box}
+
+    .panels{
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        
+    }
+
+    .panel{
+        background: red;
+        color: #000000;
+        text-align: center;
+        align-items: center;
+        flex: 1;
+        transition: all 1s ease-in;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .panel > * {
+        text-transform: uppercase;
+        font-size: 2rem;
+        transition: transform 1.4s;
+        flex: 1 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .panel-1{
+        background: url(img/1.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+     .panel-2{
+        background: url(img/2.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+     .panel-3{
+        background: url(img/3.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .panel-4{
+        background: url(img/4.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .panel-5{
+        background: url(img/5.png);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .panel > *:first-child{ transform: translateY(-100%); }
+    .panel.open-active > *:first-child {transform: translateY(-20%)}
+    .panel > *:last-child{ transform: translateY(100%); }
+    .panel.open-active > *:last-child {transform: translateY(20%)}
+
+    .panel.open{
+        flex: 4;
+        transition: all 1.5s ease-in;
+        flex-shrink: 0;
+    }
+
+    .card{ max-height: 200px; width: 50%; background: palegoldenrod; display: flex; flex-direction: row}
+    .card > * { flex: 1;}
+    .card > *:last-child{ height: 100%; flex: 3; background: red; display: flex; align-items:center; justify-content: center;}
+</style>
+
+<body>
+    
+<div class="panels">
+    <div class="panel panel-1"></div>
+    <div class="panel panel-2"></div>
+    <div class="panel panel-3"></div>
+    <div class="panel panel-4"></div>
+    <div class="panel panel-5"></div>
+</div>
+
+</body>
+
+<script>
+
+ const panels = document.querySelectorAll('.panel');
+
+ function toggleOpen(){
+     this.classList.toggle('open')
+ }
+
+ function toggleActive(){
+         this.classList.toggle('open-active');
+ }
+
+ panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+ panels.forEach(panel => panel.addEventListener('click', toggleActive));
+
+</script>
+</html>
